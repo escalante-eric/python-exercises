@@ -3,10 +3,7 @@
 # 1. Define a function named is_two. It should accept one input and return True if the passed input is either the number or the string 2, False otherwise.
 
 # def is_two(n):
-#     if n == '2':
-#         return True
-#     else:
-#         return False
+#     return n == '2' or n == 2
 
 # n = input('Please enter a number: ')
 # print(is_two(n))
@@ -14,10 +11,7 @@
 # 2. Define a function named is_vowel. It should return True if the passed string is a vowel, False otherwise.
 
 # def is_vowel(n):
-#     if n in 'aeiou':
-#         return True
-#     else:
-#         return False
+#     return n in 'aeiou'
 
 # vowel = input('Please enter a letter: ')
 # print(is_vowel(vowel))
@@ -25,26 +19,26 @@
 # 3. Define a function named is_consonant. It should return True if the passed string is a consonant, False otherwise. Use your is_vowel function to accomplish this.
 
 # def is_consonant(n):
-#     if n in 'aeiou':
-#         return False
-#     else:
-#         return True
+#     return not is_vowel(n)
 
 # consonant = input('Please enter a letter: ')
-# print(is_consonant(consonant))
+# print(is_consonant(n))
 
 # 4. Define a function that accepts a string that is a word. The function should capitalize the first letter of the word if the word starts with a consonant.
 
-# def string(word):
-#     if not word.startswith('aeiou'):
-#         return word.title()
+# def cap_if_consonant(word):
+#     first_letter = word[0]
+#     if is_consonant(first_letter):
+#         return word.capitalize()
+#     else:
+#         return word
 
-# print(string('hello world'))
+# print(cap_if_consonant('ada'))
 
 # 5. Define a function named calculate_tip. It should accept a tip percentage (a number between 0 and 1) and the bill total, and return the amount to tip.
 
 # def calculate_tip(tip_percentage, bill_total):
-#     return (bill_total * tip_percentage) + bill_total
+#     return bill_total * tip_percentage
 
 # print(calculate_tip(.11, 32))
 
@@ -58,7 +52,8 @@
 # 7. Define a function named handle_commas. It should accept a string that is a number that contains commas in it as input, and return a number as output.
 
 # def handle_commas(n):
-#     return n.replace(',', '')
+#     n_without_commas = n.replace(',', '')
+#     return int(n_without_commas)
 
 # print(handle_commas('1,000'))
 
@@ -81,9 +76,7 @@
 # 9. Define a function named remove_vowels that accepts a string and returns a string with all the vowels removed.
 
 # def remove_vowels(n):
-#     for i in 'aeiouAEIOU':
-#         n = n.replace(i,'')
-#     return n
+#     return ''.join([letter for letter in n if is_consonant(letter)])
 
 # print(remove_vowels('Hello, World'))
 
@@ -98,12 +91,18 @@
 # 11. Write a function named cumsum that accepts a list of numbers and returns a list that is the cumulative sum of the numbers in the list.
 
 # def cumsum(list):
+#     '''Prints the list that is the cumulative sum of the number in the accepted list'''
+
 #     total = 0                           # starting at index 0
-#     cumulative_sum = []                 # make sure return value is a list
+#     cumulative_sum = []                 # make sure return values are in a list
 #     for value in list:
 #         total += value                  # increment by each value
 #         cumulative_sum.append(total)    # add the new value to the end of the list
 #     return cumulative_sum               # return the cumulitive sum list
 
 # list_of_numbers = [1, 2, 3, 4]
+
+# print(cumsum.__doc__)
 # print(cumsum(list_of_numbers))
+
+
