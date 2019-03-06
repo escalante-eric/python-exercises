@@ -22,9 +22,9 @@ def is_vowel(n):
     return n in 'aeiou'
 
 print(is_vowel.__doc__)
-print("is_vowel('a') == {}".format(is_vowel('a')))
-print("is_vowel('e') == {}".format(is_vowel('e')))
-print("is_vowel('y') == {}".format(is_vowel('y')))
+print("is_vowel('a') == %s" % is_vowel('a'))
+print("is_vowel('e') == %s" % is_vowel('e'))
+print("is_vowel('y') == %s" % is_vowel('y'))
 print('\n')
 
 # 3. Define a function named is_consonant. It should return True if the passed string is a consonant, False otherwise. Use your is_vowel function to accomplish this.
