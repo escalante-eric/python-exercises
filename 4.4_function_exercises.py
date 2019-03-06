@@ -148,8 +148,8 @@ def normalize_name(n):
     return ''.join(valid_char).strip().replace(' ', '_')
 
 print(normalize_name.__doc__)
-print("normalize_name('Name') == {}".format(normalize_name('Name')))
-print("normalize_name('First Name') == {}".format(normalize_name('First Name')))
+print("normalize_name('Name') == %s" % normalize_name('Name'))
+print("normalize_name('First Name') == %s" % normalize_name('First Name'))
 print('\n')
 
 # 11. Write a function named cumsum that accepts a list of numbers and returns a list that is the cumulative sum of the numbers in the list.
