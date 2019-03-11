@@ -74,4 +74,14 @@ print("Least common favorite fruit: {}".format(min(count)))
 print('\n')
 
 # Total number of unread messages for all users 
+print('--- Total number of unread messages for all users ---')
+def extract_n_unread_messages(greeting: str):
+    start = 'You have '
+    stop = ' unread messages.'
+    start_index = greeting.index(start) + len(start)
+    stop_index = greeting.index(stop)
+    return int(greeting[start_index:stop_index])
 
+greetings = [user['greeting'] for user in profiles]
+unread_messages = [extract_n_unread_messages(greeting) for greeting in greetings]
+print(sum(unread_messages))
