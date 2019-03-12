@@ -123,4 +123,85 @@ print('Reshaped b to be a single list of 6: {}'.format(b.reshape(1,6)))
 
 # Exercise 12 - reshape the array b to be a list of 6 lists, each containing only 1 number (6 x 1)
 print('Reshaped b to be a single list of 6: {}'.format(b.reshape(6,1)))
+print('\n')
 
+## Setup 3
+c = np.array([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+])
+
+# HINT, you'll first need to make sure that the "c" variable is a numpy array prior to using numpy array methods.
+# Exercise 1 - Find the min, max, sum, and product of c.
+sum_of_c = c.sum()
+min_of_c = c.min()
+max_of_c = c.max()
+mean_of_c = c.mean()
+product_of_c = c.prod()
+
+# Exercise 2 - Determine the standard deviation of c.
+std_dev_of_c = c.std()
+print('The std dev of c: %.2f' % std_dev_of_c)
+
+# Exercise 3 - Determine the variance of c.
+var_of_c = c.var()
+print('The variance of c: %.2f' % var_of_c)
+
+# Exercise 4 - Print out the shape of the array c
+print('The shape of array b: {}'.format(c.shape))
+
+# Exercise 5 - Transpose c and print out transposed result.
+print('The view of array with axes transposed: {}'.format(c.transpose()))
+
+# Exercise 6 - Multiply c by the c-Transposed and print the result.
+print('C multiplied by C-transposed: {}'.format(c * c.transpose()))
+
+# Exercise 7 - Write the code necessary to sum up the result of c times c transposed. Answer should be 261
+ac = c
+bc = c.transpose()
+cc = ac * bc
+print('Sum of the results from c * c-transposed: {}'.format(cc.sum()))
+
+# Exercise 8 - Write the code necessary to determine the product of c times c transposed. Answer should be 131681894400.
+ccc = product_of_c * bc 
+print(ccc)
+print('\n')
+
+## Setup 4
+d = np.array([
+    [90, 30, 45, 0, 120, 180],
+    [45, -90, -30, 270, 90, 0],
+    [60, 45, -45, 90, -45, 180]
+])
+
+# Exercise 1 - Find the sine of all the numbers in d
+print('Returns sin of d: {}'.format(np.sin(d)))
+
+# Exercise 2 - Find the cosine of all the numbers in d
+print('Returns cos of d: {}'.format(np.cos(d)))
+
+# Exercise 3 - Find the tangent of all the numbers in d
+print('Returns tan of d: {}'.format(np.tan(d)))
+
+# Exercise 4 - Find all the negative numbers in d
+print('Negative numbers: {}'.format(d[d < 0]))
+
+# Exercise 5 - Find all the positive numbers in d
+print('Positive numbers: {}'.format(d[d > 0]))
+
+# Exercise 6 - Return an array of only the unique numbers in d.
+print('Only unique numbers of d: {}'.format(np.unique(d)))
+
+# Exercise 7 - Determine how many unique numbers there are in d.
+print('Lenth of only unique numbers of d: {}'.format(len(np.unique(d))))
+
+# Exercise 8 - Print out the shape of d.
+print('The shape of array b: {}'.format(d.shape))
+
+# Exercise 9 - Transpose and then print out the shape of d.
+d_transpose = d.transpose()
+print('The transpose shape of d: {}'.format(d_transpose.shape))
+
+# Exercise 10 - Reshape d into an array of 9 x 2
+print('Reshaped b to be a single list of 6: {}'.format(d.reshape(9,2)))
