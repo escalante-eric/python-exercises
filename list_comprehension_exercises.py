@@ -26,17 +26,25 @@ print([fruit for fruit in fruits if len(fruit) == 5])
 print([fruit for fruit in fruits if len(fruit) < 5])
 
 # 8. Make a list containing the number of characters in each fruit. Output would be [5, 4, 10, etc... ]
-
+print([len(fruit) for fruit in fruits])
 
 # 9. Make a variable named fruits_with_letter_a that contains a list of only the fruits that contain the letter "a"
 
 # 10. Make a variable named even_numbers that holds only the even numbers
+even_numbers = [x for x in numbers if x%2==0]
+print(even_numbers)
 
 # 11. Make a variable named odd_numbers that holds only the odd numbers
+odd_numbers = [x for x in numbers if x%2==1]
+print(odd_numbers)
 
 # 12. Make a variable named positive_numbers that holds only the positive numbers
+positive_numbers = [x for x in numbers if x > 0]
+print(positive_numbers)
 
 # 13. Make a variable named negative_numbers that holds only the negative numbers
+negative_numbers = [x for x in numbers if x < 0]
+print(negative_numbers)
 
 # 14. Use a list comprehension with a conditional in order to produce a list of numbers with 2 or more numerals
 
