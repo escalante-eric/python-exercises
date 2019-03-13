@@ -1,8 +1,11 @@
-## 1. Import pandas and numpy
+### Basics
+# 1. Import pandas and numpy
 import numpy as np
 import pandas as pd
 
-## 2. Use the code below to generate a data frame for students
+import matplotlib.pyplot as plt
+
+# 2. Use the code below to generate a data frame for students
 # Your data frame should include the student number, student name, shoe_size, and favorite number.
 # Store your data frame in a variable named students
 
@@ -52,3 +55,38 @@ df[df.shoe_sizes < df.shoe_sizes.quantile(0.25)]
 
 # 13. Find the names of all the students that have a shoe size less than the 1st quartile of shoe sizes
 df[df.shoe_sizes < df.shoe_sizes.quantile(0.75)]
+
+### Aggregation & Plotting
+# 1. Calculate the mean, median, min, and max for the shoe sizes and favorite numbers
+for col in ['shoe_sizes', 'favorite_number']:
+    print('-- {} class'.format(col.capitalize()))
+    print('  - Mean:{:.2f}'.format(df[col].mean()))
+    print('  - Min: {:.2f}'.format(df[col].min()))
+    print('  - Max: {:.2f}'.format(df[col].max()))
+
+# 2. Sort the data frame by the students shoe size
+df.sort_values(by='shoe_sizes')
+
+# 3. Sort the data frame by the side of the classroom, then by their student number
+df.sort_values(by='shoe_sizes').sort_values(by='student_number')
+
+# 4. Find the number of students on each side of the classroom
+print(df[['student_name','side_of_classroom']].groupby('side_of_classroom').count())
+
+# 5. Find the average shoe size for each side of the classroom
+print(df[['shoe_sizes', 'side_of_classroom']].groupby('side_of_classroom').agg([np.mean]))
+
+# 6. Find the maximum favorite number for each side of the classroom
+print(df[['favorite_number', 'side_of_classroom']].groupby('side_of_classroom').agg([np.max]))
+
+# 7. Create a pie chart that visualizes the number of students on each side of the classroom.
+# df.side_of_classroom.pie()
+
+# 8. Create a histogram of the shoe sizes in the classroom
+df.shoe_sizes.plot.hist()
+
+# 9. Create a histogram of the favorite numbers in the classroom
+df.favorite_number.plot.hist()
+
+# 10. Create a scatter plot of shoe size vs favorite number
+df.plot.scatter(x='shoe_sizes', y='favorite_number')
