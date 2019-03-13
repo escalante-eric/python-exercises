@@ -47,9 +47,14 @@ negative_numbers = [x for x in numbers if x < 0]
 print(negative_numbers)
 
 # 14. Use a list comprehension with a conditional in order to produce a list of numbers with 2 or more numerals
+print([number for number in numbers if number > 0 and len(str(number)) >= 2] )
 
 # 15. Make a variable named numbers_squared that contains the numbers list with each element squared. Output is [4, 9, 16, etc...]
+numbers_squared = [x**2 for x in numbers]
+print(numbers_squared)
 
 # 16. Make a variable named odd_negative_numbers that contains only the numbers that are both odd and negative.
+odd_negative_numbers = [x for x in numbers if x < 0 and x%2==1]
+print(odd_negative_numbers)
 
 # 17. Make a variable named primes that is a list containing the prime numbers in the numbers list.
