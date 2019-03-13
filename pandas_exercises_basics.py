@@ -33,10 +33,10 @@ print(df.rename(columns={'student_number': 'student_id', 'shoe_sizes': 'shoe_siz
 print(df[['shoe_sizes','side_of_classroom']])
 
 # 7. Create a new data frame that has all of the columns, but only 5 rows.
-print(df.head())
+print(df.sample(5))
 
 # 8. Create a new data frame that has only columns for favorite number and name, and only includes 7 rows.
-print(df[['favorite_number','student_name']].head(7))
+print(df[['favorite_number','student_name']].sample(7))
 
 # 9. Create a new column for the ratio of shoe size to the favorite number. Name this ss_to_fn
 df['ss_to_fn'] = df.shoe_sizes / df.favorite_number
@@ -45,10 +45,10 @@ df['ss_to_fn'] = df.shoe_sizes / df.favorite_number
 df['z-score_shoe_sizes'] = (df.shoe_sizes - df.shoe_sizes.mean() / df.shoe_sizes.std())
 
 # 11. Transform the side_of_the_classroom columns such that the values are either R or L.
-df['side_of_classroom'] = df.side_of_classroom.apply(lambda side: 'R' if side == 'right' else 'L')
+df['side_of_classroom'] = df.side_of_classroom.str[0].str.upper()
 
 # 12. Find the names of all the students that have a shoe size greater than the 3rd quartile of shoe sizes (You can use the .quantile method on a series for this)
-
+df[df.shoe_sizes < df.shoe_sizes.quantile(0.25)]
 
 # 13. Find the names of all the students that have a shoe size less than the 1st quartile of shoe sizes
-
+df[df.shoe_sizes < df.shoe_sizes.quantile(0.75)]
