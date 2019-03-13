@@ -30,6 +30,8 @@ print([len(fruit) for fruit in fruits])
 
 # 9. Make a variable named fruits_with_letter_a that contains a list of only the fruits that contain the letter "a"
 
+print('\n')
+
 # 10. Make a variable named even_numbers that holds only the even numbers
 even_numbers = [x for x in numbers if x%2==0]
 print(even_numbers)
@@ -58,3 +60,5 @@ odd_negative_numbers = [x for x in numbers if x < 0 and x%2==1]
 print(odd_negative_numbers)
 
 # 17. Make a variable named primes that is a list containing the prime numbers in the numbers list.
+primes = [number for number in numbers if number > 1 for num in numbers not (number % num) ==0]
+print(primes)
