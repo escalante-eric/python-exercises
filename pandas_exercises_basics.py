@@ -80,7 +80,7 @@ print(df[['shoe_sizes', 'side_of_classroom']].groupby('side_of_classroom').agg([
 print(df[['favorite_number', 'side_of_classroom']].groupby('side_of_classroom').agg([np.max]))
 
 # 7. Create a pie chart that visualizes the number of students on each side of the classroom.
-# df.side_of_classroom.pie()
+
 
 # 8. Create a histogram of the shoe sizes in the classroom
 df.shoe_sizes.plot.hist()
@@ -90,3 +90,51 @@ df.favorite_number.plot.hist()
 
 # 10. Create a scatter plot of shoe size vs favorite number
 df.plot.scatter(x='shoe_sizes', y='favorite_number')
+
+### Reading & Writing Data
+# 1. Save the students data to a csv file.
+
+students = '''Sally; 
+              Jane; 
+              Suzie; 
+              Billy; 
+              Ada; 
+              John; 
+              Thomas;
+              Marie; 
+              Albert; 
+              Richard; 
+              Isaac; 
+              Alan'''.strip()
+
+with open('students.csv', 'w') as f:
+    f.write(students)
+
+# 2. Read the data from the csv file back into pandas. What do you notice?
+print(pd.read_csv('students.csv', header=None, sep=';'))
+
+# 3. Create a data frame based on the profiles.json file. Explore this data frame's structure
+import json
+
+with open('profiles.json') as json_data:
+    print(pd.read_json('profiles.json'))
+
+
+# 4. Write the code necessary to create a data frame based on the results of a SQL query to the numbers database.
+from env import user, host, password
+
+def get_connection(db, user, host, password):
+    from sqlalchemy import create_engine
+    url = f'mysql+pymysql://{user}:{password}@{host}/{db}'
+    return create_engine(url)
+
+conn = get_connection('ada_students', user, host, password)
+
+df_sql = pd.read_sql('select sg.group_id, s.first_name \
+                        from student_groups as sg \
+                        join students as s \
+                        on sg.student_id = s.student_id \
+                        order by sg.group_id', conn)
+
+print(df_sql)
+
