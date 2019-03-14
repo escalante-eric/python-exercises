@@ -92,7 +92,7 @@ print(pd.read_sql('select e.hire_date, t.title \
                 join titles as t on e.emp_no = t.emp_no \
                 group by t.title, e.hire_date \
                 order by e.hire_date \
-                limit 10', conn))
+                limit 5', conn))
 
 print('\n')
 # 5. xplore the data from the chipotle database. Write a python script that will use this data to answer the following questions:
