@@ -120,6 +120,14 @@ with open('profiles.json') as json_data:
     print(pd.read_json('profiles.json'))
 
 
+from os import remove as rm
+
+for file in ('students.csv', 'profiles.json'):
+    try:
+        rm(file)
+    except FileNotFoundError:
+        pass
+
 # 4. Write the code necessary to create a data frame based on the results of a SQL query to the numbers database.
 from env import user, host, password
 
