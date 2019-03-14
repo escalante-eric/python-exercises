@@ -94,8 +94,13 @@ print(pd.read_sql('select e.hire_date, t.title \
                 limit 10', conn))
             
 # 5. xplore the data from the chipotle database. Write a python script that will use this data to answer the following questions:
-conn_c = get_connection('chipole', user, host, password)
+conn = get_connection('chipotle', user, host, password)
 
 # What is the total price for each order?
+print(pd.read_sql('select id from orders limit 10', conn))
+
 # What are the most popular 3 items?
+
+
 # Which item has produced the most revenue?
+print(pd.read_sql('select item_price, item_name from orders group by item_name, item_price order by item_price desc limit 1', conn))
