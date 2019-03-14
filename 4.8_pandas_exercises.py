@@ -76,10 +76,26 @@ def get_connection(db, user, host, password):
 conn = get_connection('employees', user, host, password)
 
 # Read the employees and titles tables into two separate data frames
-print(pd.read_sql('select * from employees', conn).head())
-print(pd.read_sql('select * from titles', conn).head())
+print(pd.read_sql('select * from employees limit 5', conn))
+print(pd.read_sql('select * from titles limit 5', conn))
 
 # Visualize the number of employees with each title.
 # Visualize how frequently employees change titles.
 
 # Use the .join method to join the employees and titles data frames together
+print(pd.read_sql('select e.hire_date, t.title from employees as e join titles as t on e.emp_no = t.emp_no limit 5', conn))
+
+# For each title, find the hire date of the employee that was hired most recently with that title.
+print(pd.read_sql('select e.hire_date, t.title \
+                from employees as e \
+                join titles as t on e.emp_no = t.emp_no \
+                group by t.title, e.hire_date \
+                order by e.hire_date \
+                limit 10', conn))
+            
+# 5. xplore the data from the chipotle database. Write a python script that will use this data to answer the following questions:
+conn_c = get_connection('chipole', user, host, password)
+
+# What is the total price for each order?
+# What are the most popular 3 items?
+# Which item has produced the most revenue?
