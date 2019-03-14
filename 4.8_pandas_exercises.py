@@ -9,7 +9,7 @@ numeric_series = ['$796,459.41', '$278.60', '$482,571.67', '$4,503,915.98', '$2,
 df_numeric_series = pd.DataFrame({'number': numeric_series})
 print('\n---\n')
 print(df_numeric_series)
-
+print('\n')
 # 2. Load the mpg dataset. Read the documentation for it, and use the data to answer these questions:
 
 from pydataset import data
@@ -42,7 +42,7 @@ print(df[['model','manufacturer']].groupby('manufacturer').count())
 
 # Do automatic or manual cars have better miles per gallon?
 print(df[['mileage_difference', 'trans']].groupby('trans').agg([np.max]))
-
+print('\n')
 # 3. Load the Mammals dataset. Read the documentation for it, and use the data to answer these questions:
 
 df_Mammals = data('Mammals')
@@ -61,8 +61,8 @@ print(df_Mammals[['weight', 'speed']].groupby('speed').agg([np.max]).head(1))
 print('Percentage of specials: {:.1f}'.format(df_Mammals['specials'].mean()))
 
 # How many animals are hoppers that are above the median speed? What percentage is this?
-print(df_Mammals[df_Mammals.hoppers < df_Mammals.speed.quantile(0.5)].count())
-
+print(df_Mammals[df_Mammals.hoppers > df_Mammals.speed.quantile(0.5)].count())
+print('\n')
 # 4. Getting data from SQL databases
 from env import user, host, password
 
@@ -92,15 +92,24 @@ print(pd.read_sql('select e.hire_date, t.title \
                 group by t.title, e.hire_date \
                 order by e.hire_date \
                 limit 10', conn))
-            
+
+print('\n')
 # 5. xplore the data from the chipotle database. Write a python script that will use this data to answer the following questions:
 conn = get_connection('chipotle', user, host, password)
 
 # What is the total price for each order?
-print(pd.read_sql('select id from orders limit 10', conn))
+
 
 # What are the most popular 3 items?
-
+print(pd.read_sql('select quantity, item_name \
+                from orders \
+                group by quantity, item_name \
+                order by quantity desc \
+                limit 3', conn))
 
 # Which item has produced the most revenue?
-print(pd.read_sql('select item_price, item_name from orders group by item_name, item_price order by item_price desc limit 1', conn))
+print(pd.read_sql('select item_price, item_name, quantity \
+                from orders \
+                group by item_name, item_price, quantity \
+                order by quantity desc \
+                limit 1', conn))
