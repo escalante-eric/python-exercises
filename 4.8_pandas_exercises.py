@@ -61,7 +61,8 @@ print(df_Mammals[['weight', 'speed']].groupby('speed').agg([np.max]).head(1))
 print('Percentage of specials: {:.1f}'.format(df_Mammals['specials'].mean()))
 
 # How many animals are hoppers that are above the median speed? What percentage is this?
-print(df_Mammals[df_Mammals.hoppers > df_Mammals.speed.quantile(0.5)].count())
+print(df_Mammals.hoppers[df_Mammals.speed > df_Mammals.speed.quantile(0.5)].sum())
+print(df_Mammals.hoppers[df_Mammals.speed > df_Mammals.speed.quantile(0.5)].sum() / len(df_Mammals.hoppers))
 print('\n')
 # 4. Getting data from SQL databases
 from env import user, host, password
