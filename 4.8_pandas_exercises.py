@@ -117,7 +117,8 @@ print('\n')
 # 5. xplore the data from the chipotle database. Write a python script that will use this data to answer the following questions:
 conn = get_connection('chipotle', user, host, password)
 orders = pd.read_sql('SELECT * FROM orders', conn)
-orders.item_price = orders.item_price.str.replace('$', '')      .astype('float')
+orders.item_price = orders.item_price.str.replace('$', '')\
+    .astype('float')
 
 # What is the total price for each order?
 total_price = orders[['order_id', 'item_price']]\
