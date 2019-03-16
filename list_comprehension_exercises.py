@@ -13,8 +13,15 @@ capitalized_fruits = [x.title() for x in fruits]
 print(capitalized_fruits)
 
 # 3. Use a list comprehension to make a variable named fruits_with_more_than_two_vowels. Hint: You'll need a way to check if something is a vowel.
+def count_vowels(word):
+    return len([l for l in word.lower() if l in 'aeiou'])
+
+fruits_with_two_plus = [fruit for fruit in fruits if count_vowels(fruit) > 2]
+print(fruits_with_two_plus)
 
 # 4. Make a variable named fruits_with_only_two_vowels. The result should be ['mango', 'kiwi']
+fruits_with_two_v = [fruit for fruit in fruits if count_vowels(fruit) == 2]
+print(fruits_with_two_v)
 
 # 5. Make a list that contains each fruit with more than 5 characters
 print([fruit for fruit in fruits if len(fruit) > 5])
@@ -30,7 +37,10 @@ print([len(fruit) for fruit in fruits])
 
 # 9. Make a variable named fruits_with_letter_a that contains a list of only the fruits that contain the letter "a"
 
-print('\n')
+fruits_with_a = [fruit for fruit in fruits if 'a' in fruit]
+print(fruits_with_a)
+print('\n----------\n')
+
 
 # 10. Make a variable named even_numbers that holds only the even numbers
 even_numbers = [x for x in numbers if x%2==0]
@@ -60,5 +70,3 @@ odd_negative_numbers = [x for x in numbers if x < 0 and x%2==1]
 print(odd_negative_numbers)
 
 # 17. Make a variable named primes that is a list containing the prime numbers in the numbers list.
-primes = [number for number in numbers if number > 1 for num in numbers not (number % num) ==0]
-print(primes)
